@@ -1,3 +1,5 @@
+/* client/src/App.css */
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,38 +7,106 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-container {
+  font-family: 'Arial', sans-serif;
+  color: #eee;
+  background-color: #282c34;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  color: #61dafb;
+  margin-bottom: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.snippets-selector {
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #3a3f47;
+  border-radius: 8px;
 }
 
-.card {
-  padding: 2em;
+.snippets-selector h2 {
+  color: #f0f0f0;
+  margin-bottom: 15px;
 }
 
-.read-the-docs {
-  color: #888;
+.snippet-btn, .selected-snippet-btn {
+  background-color: #444;
+  color: white;
+  border: 1px solid #555;
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.snippet-btn:hover {
+  background-color: #555;
+  border-color: #666;
+}
+
+.selected-snippet-btn {
+  background-color: #61dafb;
+  color: #282c34;
+  border-color: #61dafb;
+  font-weight: bold;
+}
+
+.typing-area-container {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.typing-area-container h3 {
+  color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.typing-area-container p {
+  color: #bbb;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.code-display {
+  background-color: #0d0d0d;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.typing-input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  background-color: #333;
+  color: #eee;
+  border: 1px solid #555;
+  border-radius: 5px;
+  font-family: 'Fira Code', 'monospace'; /* Recommended for code typing */
+  font-size: 16px;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.typing-input:focus {
+  outline: none;
+  border-color: #61dafb;
+  box-shadow: 0 0 0 2px rgba(97, 218, 251, 0.5);
+}
+
+/* Basic styling for SyntaxHighlighter to blend with dark theme */
+.hljs {
+  background-color: #1e1e1e !important;
+  color: #f8f8f2 !important;
+  font-family: 'Fira Code', 'monospace' !important;
+  font-size: 16px !important;
+  line-height: 1.5;
+  padding: 10px;
 }
