@@ -16,11 +16,6 @@ app.use(cors({
         : 'http://localhost:5173' 
 }));
 
-// Debugging log (can be removed once deployed successfully)
-console.log('DEBUG: MONGO_URI from process.env:', process.env.MONGO_URI);
-console.log('DEBUG: NODE_ENV from process.env:', process.env.NODE_ENV);
-
-
 // Connect to the database
 const connectDB = require('./db');
 connectDB();
