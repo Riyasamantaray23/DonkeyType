@@ -2,6 +2,8 @@ const express = require('express');
 const dotenv =require('dotenv');
 const cors = require('cors');
 
+
+const app=express();
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
         ? 'YOUR_FRONTEND_RENDER_URL' // You'll fill this in later
@@ -16,7 +18,7 @@ connectDB();
 
 
 
-const app=express();
+
 const PORT = process.env.PORT || 5000;
 
 //Middleware
