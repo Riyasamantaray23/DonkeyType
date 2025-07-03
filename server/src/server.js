@@ -12,8 +12,8 @@ const app = express();
 // 2. Configure CORS - ONLY ONCE, and use process.env.NODE_ENV correctly
 app.use(cors({
     origin: process.env.NODE_ENV === 'production'
-        ? 'YOUR_FRONTEND_RENDER_URL' // IMPORTANT: Replace this with your deployed frontend URL
-        : 'http://localhost:5173' // Your local development URL for the frontend
+        ? 'https://frontend-5g8g.onrender.com'
+        : 'http://localhost:5173' 
 }));
 
 // Debugging log (can be removed once deployed successfully)
