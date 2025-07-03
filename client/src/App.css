@@ -110,3 +110,36 @@ h1 {
   line-height: 1.5;
   padding: 10px;
 }
+
+/* client/src/App.css */
+
+/* ... (existing CSS) ... */
+
+.typing-code-display {
+  background-color: #0d0d0d;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-family: 'Fira Code', 'monospace'; /* Match typing input font */
+  font-size: 16px;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Ensures line breaks are respected */
+  word-break: break-all; /* Breaks words if necessary */
+  text-align: left; /* Ensure text aligns left */
+}
+
+.typing-code-display .correct {
+  color: #98c379; /* Green for correct */
+}
+
+.typing-code-display .incorrect {
+  color: #e06c75; /* Red for incorrect */
+  background-color: rgba(224, 108, 117, 0.2); /* Slight red background */
+}
+
+.typing-code-display .current {
+  background-color: rgba(97, 218, 251, 0.3); /* Cyan highlight for current character */
+  border-bottom: 2px solid #61dafb; /* Underline for current char */
+  padding-bottom: 2px; /* Small padding to lift underline */
+}

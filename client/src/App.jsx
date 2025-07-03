@@ -1,41 +1,26 @@
 // client/src/App.jsx
 
 import React, { useState, useEffect } from 'react';
-import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
-// Choose a style. You can find more at: https://github.com/react-syntax-highlighter/react-syntax-highlighter/blob/master/AVAILABLE_STYLES_HLJS.MD
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-
-// Register languages you need to highlight
-import javascript from 'react-syntax-highlighter/dist/esm/languages/hljs/javascript';
-import python from 'react-syntax-highlighter/dist/esm/languages/hljs/python';
-import sql from 'react-syntax-highlighter/dist/esm/languages/hljs/sql';
-
-SyntaxHighlighter.registerLanguage('javascript', javascript);
-SyntaxHighlighter.registerLanguage('python', python);
-SyntaxHighlighter.registerLanguage('sql', sql);
-
-
-import './App.css'; // Your existing CSS
+import './App.css';
+import TypingChallenge from './components/TypingChallenge'; // Import the new component
 
 function App() {
   const [snippets, setSnippets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // New state to hold the currently selected snippet for typing
-  const [selectedSnippet, setSelectedSnippet] = useState(null);
+  const [selectedSnippet, setSelectedSnippet] = useState(null); // State to hold the currently selected snippet
 
   useEffect(() => {
     const fetchSnippets = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/snippets'); // Fetch from your backend API
+        const response = await fetch('http://localhost:5000/api/snippets');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
         setSnippets(data);
-        // Automatically select the first snippet for display
         if (data.length > 0) {
-          setSelectedSnippet(data[0]);
+          setSelectedSnippet(data[0]); // Automatically select the first snippet
         }
       } catch (err) {
         setError(err.message);
@@ -45,7 +30,7 @@ function App() {
     };
 
     fetchSnippets();
-  }, []);
+  }, []); // Empty dependency array means this runs once on mount
 
   const handleSnippetSelect = (snippetId) => {
     const snippet = snippets.find(s => s._id === snippetId);
@@ -79,30 +64,8 @@ function App() {
         ))}
       </div>
 
-      {/* Display the selected snippet's code */}
-      {selectedSnippet && (
-        <div className="typing-area-container">
-          <h3>{selectedSnippet.title} ({selectedSnippet.difficulty})</h3>
-          <p>{selectedSnippet.description}</p>
-          <div className="code-display">
-            <SyntaxHighlighter
-              language={selectedSnippet.language === 'jsx' ? 'javascript' : selectedSnippet.language} // Use 'javascript' for 'jsx' highlighting if 'jsx' isn't fully supported by the theme
-              style={docco}
-              showLineNumbers={true}
-            >
-              {selectedSnippet.code}
-            </SyntaxHighlighter>
-          </div>
-          {/* Typing input will go here */}
-          <textarea
-            className="typing-input"
-            placeholder="Start typing here..."
-            rows="10"
-            cols="80"
-            // We'll add logic for typing here later
-          ></textarea>
-        </div>
-      )}
+      {/* Render the TypingChallenge component, passing the selectedSnippet as a prop */}
+      {selectedSnippet && <TypingChallenge selectedSnippet={selectedSnippet} />}
 
       {!selectedSnippet && snippets.length > 0 && (
         <p>Please select a snippet to begin typing.</p>
